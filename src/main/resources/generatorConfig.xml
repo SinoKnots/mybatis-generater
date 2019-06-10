@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+  PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+    <!--数据库驱动-->
+    <classPathEntry location="E:\MavenRepository\mysql\mysql-connector-java\8.0.16\mysql-connector-java-8.0.16.jar"/>
+    
+    <context id="mysql">
+        <!-- 自定义Mapper类和Mapper.xml -->
+	    <!-- 此处是将UserMapper.xml改名为UserDao.xml -->        
+		<plugin type="com.sinoknots.generator.RenameJavaMapperPlugins">  
+		    <property name="searchString" value="Mapper" />
+		    <property name="replaceString" value="Dao" />
+		</plugin>  
+		
+		<!-- 此处是将UserMapper改名为UserDao 接口  -->        
+		<plugin type="com.sinoknots.generator.RenameJavaMapperPlugins">  
+		    <property name="searchString" value="Mapper$" />
+		    <property name="replaceString" value="Dao" />
+		</plugin>
+	
+		<plugin type="com.sinoknots.generator.MyLombokPlugin">
+			<property name="defaultSerialVersionUID" value="true" />
+			<property name="supperClass" value="com.sinoknots.bill.ui.entity.BaseEntity" />
+			<property name="ignoreFields" value="id,revision,createdBy,createdTime,updatedBy,updatedTime" />
+		</plugin>
+		
+        <commentGenerator>
+            <property name="suppressDate" value="true"/>
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+        
+        <!--数据库链接地址账号密码-->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver" userId="root" password="admin"
+        	connectionURL="jdbc:mysql://localhost:3306/bill?useUnicode=true&amp;characterEncoding=UTF-8&amp;zeroDateTimeBehavior=convertToNull&amp;serverTimezone=UTC"></jdbcConnection>
+        
+        <!-- 暴力转换大数字 -->
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+        
+        <!--生成Model类存放位置-->
+        <javaModelGenerator targetPackage="com.sinoknots.bill.ui.entity" targetProject="src/main/java">
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+        
+        <!--生成映射文件存放位置-->
+        <sqlMapGenerator targetPackage="com.sinoknots.bill.ui.entity" targetProject="src/main/resources">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+        
+        <!--生成mapper类存放位置-->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.sinoknots.bill.ui.entity" targetProject="src/main/java">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+        
+        <!--生成对应表及类名-->
+        <table tableName="tb_bill_type" domainObjectName="BillTypePo" enableCountByExample="false" 
+        	enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+        <table tableName="tb_bill_detail" domainObjectName="BillDetailPo" enableCountByExample="false" 
+        	enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+
+    </context>
+</generatorConfiguration>

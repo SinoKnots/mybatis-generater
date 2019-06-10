@@ -4,7 +4,7 @@ package com.sinoknots.bill.ui.entity;
 * 
 * @author sinoknots 
 * @version V1.0.0
-* @since V1.0.0(2019-06-10 22:47:20)
+* @since V1.0.0(2019-06-10 23:17:17)
 */
 public class BillTypePo extends BaseEntity {
     /**
@@ -35,5 +35,45 @@ public class BillTypePo extends BaseEntity {
     /**
      * 创建时间
      */
-    private Integer createTime;
+    private Long createTime;
+
+    public String getTypeId() {
+        return typeId;
+    }
+
+    public void setTypeId(String typeId) {
+        this.typeId = typeId == null ? null : typeId.trim();
+    }
+
+    public String getTypeName() {
+        return typeName;
+    }
+
+    public void setTypeName(String typeName) {
+        this.typeName = typeName == null ? null : typeName.trim();
+    }
+
+    public String getTypeDesc() {
+        return typeDesc;
+    }
+
+    public void setTypeDesc(String typeDesc) {
+        this.typeDesc = typeDesc == null ? null : typeDesc.trim();
+    }
+
+    public String getCreaterId() {
+        return createrId;
+    }
+
+    public void setCreaterId(String createrId) {
+        this.createrId = createrId == null ? null : createrId.trim();
+    }
+
+    public Long getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Long createTime) {
+        this.createTime = createTime;
+    }
 }

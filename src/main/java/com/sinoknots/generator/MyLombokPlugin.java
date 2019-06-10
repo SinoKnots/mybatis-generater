@@ -108,8 +108,6 @@ public class MyLombokPlugin extends PluginAdapter {
 			field.addJavaDocLine(fieldSb.toString().replace("\n", " "));
 			field.addJavaDocLine(" */");
 		}
-		
-		// TODO 生成getter()和setter()
 		return true;
 	}
 
@@ -129,15 +127,15 @@ public class MyLombokPlugin extends PluginAdapter {
 	@Override
 	public boolean modelSetterMethodGenerated(Method method, TopLevelClass topLevelClass,
 			IntrospectedColumn introspectedColumn, IntrospectedTable introspectedTable, ModelClassType modelClassType) {
-		// 不生成getter
-		return false;
+		// 生成getter
+		return true;
 	}
 
 	@Override
 	public boolean modelGetterMethodGenerated(Method method, TopLevelClass topLevelClass,
 			IntrospectedColumn introspectedColumn, IntrospectedTable introspectedTable, ModelClassType modelClassType) {
-		// 不生成setter
-		return false;
+		// 生成setter
+		return true;
 	}
 
 	private String date2Str(Date date) {

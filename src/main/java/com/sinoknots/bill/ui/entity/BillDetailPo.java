@@ -4,7 +4,7 @@ package com.sinoknots.bill.ui.entity;
 * 
 * @author sinoknots 
 * @version V1.0.0
-* @since V1.0.0(2019-06-10 23:17:17)
+* @since V1.0.0(2019-06-11 01:35:17)
 */
 public class BillDetailPo extends BaseEntity {
     /**
@@ -25,7 +25,7 @@ public class BillDetailPo extends BaseEntity {
     /**
      * 金额，单位分
      */
-    private Integer amount;
+    private Long amount;
 
     /**
      * 账单类型编号
@@ -63,11 +63,11 @@ public class BillDetailPo extends BaseEntity {
         this.typeId = typeId == null ? null : typeId.trim();
     }
 
-    public Integer getAmount() {
+    public Long getAmount() {
         return amount;
     }
 
-    public void setAmount(Integer amount) {
+    public void setAmount(Long amount) {
         this.amount = amount;
     }
 

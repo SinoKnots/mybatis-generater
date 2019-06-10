@@ -4,7 +4,7 @@
   "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
 <generatorConfiguration>
     <!--数据库驱动-->
-    <classPathEntry location="E:\MavenRepository\mysql\mysql-connector-java\8.0.16\mysql-connector-java-8.0.16.jar"/>
+    <classPathEntry location="E:\MavenRepository\mysql\mysql-connector-java\5.1.39\mysql-connector-java-5.1.39.jar"/>
     
     <context id="mysql">
         <!-- 自定义Mapper类和Mapper.xml -->

@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sino.pms.user.backgroup.ui.domain.dao.UserLoginLogPOMapper">
+  <resultMap id="BaseResultMap" type="com.sino.pms.user.backgroup.ui.domain.po.UserLoginLogPO">
+    <constructor>
+      <idArg column="id" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="user_id" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="login_account" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="login_app" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="login_mode" javaType="java.lang.String" jdbcType="CHAR" />
+      <arg column="is_logined" javaType="java.lang.String" jdbcType="CHAR" />
+      <arg column="last_login_time" javaType="java.lang.String" jdbcType="CHAR" />
+      <arg column="last_login_ip" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="login_time" javaType="java.lang.String" jdbcType="CHAR" />
+      <arg column="login_ip" javaType="java.lang.String" jdbcType="VARCHAR" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, user_id, login_account, login_app, login_mode, is_logined, last_login_time, last_login_ip, 
+    login_time, login_ip
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from pms_user_login_log
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from pms_user_login_log
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.sino.pms.user.backgroup.ui.domain.po.UserLoginLogPO">
+    insert into pms_user_login_log (id, user_id, login_account, 
+      login_app, login_mode, is_logined, 
+      last_login_time, last_login_ip, login_time, 
+      login_ip)
+    values (#{id,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT}, #{loginAccount,jdbcType=VARCHAR}, 
+      #{loginApp,jdbcType=VARCHAR}, #{loginMode,jdbcType=CHAR}, #{isLogined,jdbcType=CHAR}, 
+      #{lastLoginTime,jdbcType=CHAR}, #{lastLoginIp,jdbcType=VARCHAR}, #{loginTime,jdbcType=CHAR}, 
+      #{loginIp,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.sino.pms.user.backgroup.ui.domain.po.UserLoginLogPO">
+    insert into pms_user_login_log
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="loginAccount != null">
+        login_account,
+      </if>
+      <if test="loginApp != null">
+        login_app,
+      </if>
+      <if test="loginMode != null">
+        login_mode,
+      </if>
+      <if test="isLogined != null">
+        is_logined,
+      </if>
+      <if test="lastLoginTime != null">
+        last_login_time,
+      </if>
+      <if test="lastLoginIp != null">
+        last_login_ip,
+      </if>
+      <if test="loginTime != null">
+        login_time,
+      </if>
+      <if test="loginIp != null">
+        login_ip,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="loginAccount != null">
+        #{loginAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="loginApp != null">
+        #{loginApp,jdbcType=VARCHAR},
+      </if>
+      <if test="loginMode != null">
+        #{loginMode,jdbcType=CHAR},
+      </if>
+      <if test="isLogined != null">
+        #{isLogined,jdbcType=CHAR},
+      </if>
+      <if test="lastLoginTime != null">
+        #{lastLoginTime,jdbcType=CHAR},
+      </if>
+      <if test="lastLoginIp != null">
+        #{lastLoginIp,jdbcType=VARCHAR},
+      </if>
+      <if test="loginTime != null">
+        #{loginTime,jdbcType=CHAR},
+      </if>
+      <if test="loginIp != null">
+        #{loginIp,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sino.pms.user.backgroup.ui.domain.po.UserLoginLogPO">
+    update pms_user_login_log
+    <set>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="loginAccount != null">
+        login_account = #{loginAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="loginApp != null">
+        login_app = #{loginApp,jdbcType=VARCHAR},
+      </if>
+      <if test="loginMode != null">
+        login_mode = #{loginMode,jdbcType=CHAR},
+      </if>
+      <if test="isLogined != null">
+        is_logined = #{isLogined,jdbcType=CHAR},
+      </if>
+      <if test="lastLoginTime != null">
+        last_login_time = #{lastLoginTime,jdbcType=CHAR},
+      </if>
+      <if test="lastLoginIp != null">
+        last_login_ip = #{lastLoginIp,jdbcType=VARCHAR},
+      </if>
+      <if test="loginTime != null">
+        login_time = #{loginTime,jdbcType=CHAR},
+      </if>
+      <if test="loginIp != null">
+        login_ip = #{loginIp,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sino.pms.user.backgroup.ui.domain.po.UserLoginLogPO">
+    update pms_user_login_log
+    set user_id = #{userId,jdbcType=BIGINT},
+      login_account = #{loginAccount,jdbcType=VARCHAR},
+      login_app = #{loginApp,jdbcType=VARCHAR},
+      login_mode = #{loginMode,jdbcType=CHAR},
+      is_logined = #{isLogined,jdbcType=CHAR},
+      last_login_time = #{lastLoginTime,jdbcType=CHAR},
+      last_login_ip = #{lastLoginIp,jdbcType=VARCHAR},
+      login_time = #{loginTime,jdbcType=CHAR},
+      login_ip = #{loginIp,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

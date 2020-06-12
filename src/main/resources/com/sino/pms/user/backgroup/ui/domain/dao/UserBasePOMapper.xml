@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sino.pms.user.backgroup.ui.domain.dao.UserBasePOMapper">
+  <resultMap id="BaseResultMap" type="com.sino.pms.user.backgroup.ui.domain.po.UserBasePO">
+    <constructor>
+      <idArg column="id" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="NAME" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="nick_name" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="email" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="mobile" javaType="java.lang.String" jdbcType="CHAR" />
+      <arg column="login_password" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="register_mode" javaType="java.lang.String" jdbcType="CHAR" />
+      <arg column="register_time" javaType="java.lang.String" jdbcType="CHAR" />
+      <arg column="statu" javaType="java.lang.String" jdbcType="CHAR" />
+      <arg column="is_deleted" javaType="java.lang.String" jdbcType="CHAR" />
+      <arg column="pwd_fail_times" javaType="java.lang.Byte" jdbcType="TINYINT" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, NAME, nick_name, email, mobile, login_password, register_mode, register_time, 
+    statu, is_deleted, pwd_fail_times
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from pms_user_base_info
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from pms_user_base_info
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.sino.pms.user.backgroup.ui.domain.po.UserBasePO">
+    insert into pms_user_base_info (id, NAME, nick_name, 
+      email, mobile, login_password, 
+      register_mode, register_time, statu, 
+      is_deleted, pwd_fail_times)
+    values (#{id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{nickName,jdbcType=VARCHAR}, 
+      #{email,jdbcType=VARCHAR}, #{mobile,jdbcType=CHAR}, #{loginPassword,jdbcType=VARCHAR}, 
+      #{registerMode,jdbcType=CHAR}, #{registerTime,jdbcType=CHAR}, #{statu,jdbcType=CHAR}, 
+      #{isDeleted,jdbcType=CHAR}, #{pwdFailTimes,jdbcType=TINYINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.sino.pms.user.backgroup.ui.domain.po.UserBasePO">
+    insert into pms_user_base_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="name != null">
+        NAME,
+      </if>
+      <if test="nickName != null">
+        nick_name,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="mobile != null">
+        mobile,
+      </if>
+      <if test="loginPassword != null">
+        login_password,
+      </if>
+      <if test="registerMode != null">
+        register_mode,
+      </if>
+      <if test="registerTime != null">
+        register_time,
+      </if>
+      <if test="statu != null">
+        statu,
+      </if>
+      <if test="isDeleted != null">
+        is_deleted,
+      </if>
+      <if test="pwdFailTimes != null">
+        pwd_fail_times,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="nickName != null">
+        #{nickName,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null">
+        #{mobile,jdbcType=CHAR},
+      </if>
+      <if test="loginPassword != null">
+        #{loginPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="registerMode != null">
+        #{registerMode,jdbcType=CHAR},
+      </if>
+      <if test="registerTime != null">
+        #{registerTime,jdbcType=CHAR},
+      </if>
+      <if test="statu != null">
+        #{statu,jdbcType=CHAR},
+      </if>
+      <if test="isDeleted != null">
+        #{isDeleted,jdbcType=CHAR},
+      </if>
+      <if test="pwdFailTimes != null">
+        #{pwdFailTimes,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sino.pms.user.backgroup.ui.domain.po.UserBasePO">
+    update pms_user_base_info
+    <set>
+      <if test="name != null">
+        NAME = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="nickName != null">
+        nick_name = #{nickName,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null">
+        mobile = #{mobile,jdbcType=CHAR},
+      </if>
+      <if test="loginPassword != null">
+        login_password = #{loginPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="registerMode != null">
+        register_mode = #{registerMode,jdbcType=CHAR},
+      </if>
+      <if test="registerTime != null">
+        register_time = #{registerTime,jdbcType=CHAR},
+      </if>
+      <if test="statu != null">
+        statu = #{statu,jdbcType=CHAR},
+      </if>
+      <if test="isDeleted != null">
+        is_deleted = #{isDeleted,jdbcType=CHAR},
+      </if>
+      <if test="pwdFailTimes != null">
+        pwd_fail_times = #{pwdFailTimes,jdbcType=TINYINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sino.pms.user.backgroup.ui.domain.po.UserBasePO">
+    update pms_user_base_info
+    set NAME = #{name,jdbcType=VARCHAR},
+      nick_name = #{nickName,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      mobile = #{mobile,jdbcType=CHAR},
+      login_password = #{loginPassword,jdbcType=VARCHAR},
+      register_mode = #{registerMode,jdbcType=CHAR},
+      register_time = #{registerTime,jdbcType=CHAR},
+      statu = #{statu,jdbcType=CHAR},
+      is_deleted = #{isDeleted,jdbcType=CHAR},
+      pwd_fail_times = #{pwdFailTimes,jdbcType=TINYINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
